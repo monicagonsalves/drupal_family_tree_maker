@@ -1,0 +1,22 @@
+{#
+/**
+ * @file family.html.twig
+ * Default theme implementation to present Family data.
+ *
+ * This template is used when viewing Family pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_family()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('family') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

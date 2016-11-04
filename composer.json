@@ -1,0 +1,14 @@
+{
+  "name": "drupal/family_tree_generator",
+  "type": "drupal-module",
+  "description": "Generates and maintains family trees",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/family_tree_generator",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/family_tree_generator",
+    "source": "http://cgit.drupalcode.org/family_tree_generator"
+  },
+  "require": { }
+}

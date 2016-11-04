@@ -1,0 +1,84 @@
+# Person routing definition
+person.settings_tab:
+  route_name: person.settings
+  title: 'Settings'
+  base_route: person.settings
+entity.person.canonical:
+  route_name: entity.person.canonical
+  base_route: entity.person.canonical
+  title: 'View'
+
+entity.person.edit_form:
+  route_name: entity.person.edit_form
+  base_route: entity.person.canonical
+  title: Edit
+
+entity.person.delete_form:
+  route_name:  entity.person.delete_form
+  base_route:  entity.person.canonical
+  title: Delete
+  weight: 10
+
+# Family routing definition
+family.settings_tab:
+  route_name: family.settings
+  title: 'Settings'
+  base_route: family.settings
+entity.family.canonical:
+  route_name: entity.family.canonical
+  base_route: entity.family.canonical
+  title: 'View'
+
+entity.family.edit_form:
+  route_name: entity.family.edit_form
+  base_route: entity.family.canonical
+  title: Edit
+
+entity.family.delete_form:
+  route_name:  entity.family.delete_form
+  base_route:  entity.family.canonical
+  title: Delete
+  weight: 10
+
+# Child to family routing definition
+child_to_family.settings_tab:
+  route_name: child_to_family.settings
+  title: 'Settings'
+  base_route: child_to_family.settings
+entity.child_to_family.canonical:
+  route_name: entity.child_to_family.canonical
+  base_route: entity.child_to_family.canonical
+  title: 'View'
+
+entity.child_to_family.edit_form:
+  route_name: entity.child_to_family.edit_form
+  base_route: entity.child_to_family.canonical
+  title: Edit
+
+entity.child_to_family.delete_form:
+  route_name:  entity.child_to_family.delete_form
+  base_route:  entity.child_to_family.canonical
+  title: Delete
+  weight: 10
+
+# Family tree routing definition
+family_tree.settings_tab:
+  route_name: family_tree.settings
+  title: 'Settings'
+  base_route: family_tree.settings
+entity.family_tree.canonical:
+  route_name: entity.family_tree.canonical
+  base_route: entity.family_tree.canonical
+  title: 'View'
+
+entity.family_tree.edit_form:
+  route_name: entity.family_tree.edit_form
+  base_route: entity.family_tree.canonical
+  title: Edit
+
+entity.family_tree.delete_form:
+  route_name:  entity.family_tree.delete_form
+  base_route:  entity.family_tree.canonical
+  title: Delete
+  weight: 10
+

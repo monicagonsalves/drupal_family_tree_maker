@@ -1,0 +1,88 @@
+add person entities:
+  title: 'Create new Person entities'
+
+administer person entities:
+  title: 'Administer Person entities'
+  description: 'Allow to access the administration form to configure Person entities.'
+  restrict access: true
+
+delete person entities:
+  title: 'Delete Person entities'
+
+edit person entities:
+  title: 'Edit Person entities'
+
+access person overview:
+  title: 'Access the Person overview page'
+
+view published person entities:
+  title: 'View published Person entities'
+
+view unpublished person entities:
+  title: 'View unpublished Person entities'
+add family entities:
+  title: 'Create new Family entities'
+
+administer family entities:
+  title: 'Administer Family entities'
+  description: 'Allow to access the administration form to configure Family entities.'
+  restrict access: true
+
+delete family entities:
+  title: 'Delete Family entities'
+
+edit family entities:
+  title: 'Edit Family entities'
+
+access family overview:
+  title: 'Access the Family overview page'
+
+view published family entities:
+  title: 'View published Family entities'
+
+view unpublished family entities:
+  title: 'View unpublished Family entities'
+add child to family entities:
+  title: 'Create new Child to family entities'
+
+administer child to family entities:
+  title: 'Administer Child to family entities'
+  description: 'Allow to access the administration form to configure Child to family entities.'
+  restrict access: true
+
+delete child to family entities:
+  title: 'Delete Child to family entities'
+
+edit child to family entities:
+  title: 'Edit Child to family entities'
+
+access child to family overview:
+  title: 'Access the Child to family overview page'
+
+view published child to family entities:
+  title: 'View published Child to family entities'
+
+view unpublished child to family entities:
+  title: 'View unpublished Child to family entities'
+add family tree entities:
+  title: 'Create new Family tree entities'
+
+administer family tree entities:
+  title: 'Administer Family tree entities'
+  description: 'Allow to access the administration form to configure Family tree entities.'
+  restrict access: true
+
+delete family tree entities:
+  title: 'Delete Family tree entities'
+
+edit family tree entities:
+  title: 'Edit Family tree entities'
+
+access family tree overview:
+  title: 'Access the Family tree overview page'
+
+view published family tree entities:
+  title: 'View published Family tree entities'
+
+view unpublished family tree entities:
+  title: 'View unpublished Family tree entities'

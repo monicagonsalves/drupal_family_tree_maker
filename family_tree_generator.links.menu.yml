@@ -1,0 +1,52 @@
+# Person menu items definition
+entity.person.collection:
+  title: 'Person list'
+  route_name: entity.person.collection
+  description: 'List Person entities'
+  parent: system.admin_structure
+  weight: 100
+
+person.admin.structure.settings:
+  title: Person settings
+  description: 'Configure Person entities'
+  route_name: person.settings
+  parent: system.admin_structure
+# Family menu items definition
+entity.family.collection:
+  title: 'Family list'
+  route_name: entity.family.collection
+  description: 'List Family entities'
+  parent: system.admin_structure
+  weight: 100
+
+family.admin.structure.settings:
+  title: Family settings
+  description: 'Configure Family entities'
+  route_name: family.settings
+  parent: system.admin_structure
+# Child to family menu items definition
+entity.child_to_family.collection:
+  title: 'Child to family list'
+  route_name: entity.child_to_family.collection
+  description: 'List Child to family entities'
+  parent: system.admin_structure
+  weight: 100
+
+child_to_family.admin.structure.settings:
+  title: Child to family settings
+  description: 'Configure Child to family entities'
+  route_name: child_to_family.settings
+  parent: system.admin_structure
+# Family tree menu items definition
+entity.family_tree.collection:
+  title: 'Family tree list'
+  route_name: entity.family_tree.collection
+  description: 'List Family tree entities'
+  parent: system.admin_structure
+  weight: 100
+
+family_tree.admin.structure.settings:
+  title: Family tree settings
+  description: 'Configure Family tree entities'
+  route_name: family_tree.settings
+  parent: system.admin_structure

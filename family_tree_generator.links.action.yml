@@ -1,0 +1,20 @@
+entity.person.add_form:
+  route_name: entity.person.add_form
+  title: 'Add Person'
+  appears_on:
+    - entity.person.collection
+entity.family.add_form:
+  route_name: entity.family.add_form
+  title: 'Add Family'
+  appears_on:
+    - entity.family.collection
+entity.child_to_family.add_form:
+  route_name: entity.child_to_family.add_form
+  title: 'Add Child to family'
+  appears_on:
+    - entity.child_to_family.collection
+entity.family_tree.add_form:
+  route_name: entity.family_tree.add_form
+  title: 'Add Family tree'
+  appears_on:
+    - entity.family_tree.collection
