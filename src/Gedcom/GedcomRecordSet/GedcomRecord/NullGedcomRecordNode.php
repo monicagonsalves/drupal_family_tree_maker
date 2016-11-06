@@ -6,10 +6,6 @@ use Drupal\family_tree_generator\Gedcom\GedcomLineList\GedcomLineNode;
 //require_once("../../GedcomLineList/GedcomLineNode.php");
 
 class NullGedcomRecordNode extends GedcomRecordNode{
-  private $line;  
-  private $parent; 
-  private $children;
-
   public function __construct(){ 
   	$this->line = NULL;
   	$this->parent = NULL; 
