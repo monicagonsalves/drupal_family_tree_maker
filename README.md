@@ -1,1 +1,3 @@
-# drupal_family_tree_maker
+# Drupal Family Tree Maker Module
+
+Creates and maintains family trees. 
