@@ -4,6 +4,7 @@ namespace Drupal\family_tree_generator\Gedcom\Tokens;
 require_once("Token.php");
 class Value extends Token {
 
+	// A value is associated with a tag. 
 	private $associated_tag;
 
 	public function __construct($string){

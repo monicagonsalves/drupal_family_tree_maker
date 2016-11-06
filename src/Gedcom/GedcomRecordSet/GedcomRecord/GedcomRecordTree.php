@@ -75,7 +75,6 @@ class GedcomRecordTree implements \Countable{
   }
   /***************************************************************************************/
   public function isValid(){
-    // Determines whether the tree is valid. But how? 
     return $this->valid; 
   }
   /***************************************************************************************/
@@ -125,6 +124,9 @@ class GedcomRecordTree implements \Countable{
           $temp = $temp->getParent();
         }
 
+        // If temp is an instance of NullGedcomRecord, then that means 
+        // we've gone up the entire parent chain. If that is the case, 
+        // then the line we're processing is invalid. 
         $this->valid = !($temp instanceof NullGedcomRecordNode);
 
         $current->setParent($temp);

@@ -6,7 +6,8 @@ abstract class Token {
 	protected $pattern;            // Regular expression pattern used to identify token in 
 	                               // stream of characters.
 
-	protected $name;               // Name of token type 
+	protected $name;               // Name of token type -- Redundant? Can we 
+	                               // just check the name of the class? 
 
 	protected $value; 
 
@@ -15,19 +16,19 @@ abstract class Token {
 		$this->name = NULL; 
 		$this->value = $string; 
 	}
-
+	/*****************************************************************************/
 	public function getTokenType(){
 		return $this->name; 
 	}
-
+	/*****************************************************************************/
 	public function getPattern(){
 		return $this->pattern;
 	}
-
+	/*****************************************************************************/
 	public function setValue($value){
 		$this->value = $value; 
 	}
-
+	/*****************************************************************************/
 	public function getValue(){
 		return $this->value; 
 	}
@@ -68,6 +69,5 @@ abstract class Token {
 		return $results;		
 	}
 	/*****************************************************************************/
-	// Subclasses must implement this function!
 	abstract public function isInstanceOfToken($info);
 }

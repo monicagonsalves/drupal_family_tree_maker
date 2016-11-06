@@ -3,10 +3,7 @@ namespace Drupal\family_tree_generator\Gedcom\Tokens;
 
 require_once("Token.php");
 
-class Undefined extends Token {
-	private $type;                                          // Is this a XRef pointer or an XRef
-	                                                        // id? 
-
+class Undefined extends Token {                                          
 	public function __construct($string){
 		parent::__construct($string);
 
