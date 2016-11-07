@@ -60,8 +60,7 @@ class GedcomRecordTree implements \Countable{
       $outputStr .= "\n" . $top;
 
       // The following must be true for us to add elements to the frontier: 
-      // 1. The top node has children to add to the frontier
-      // 2. Top cannot be the parent of the last fully explored node.
+      // 1. The top node has children to add to the frontier.
       if($top->hasChildren()){
         $frontier = array_merge($frontier, array_reverse($top->getChildren()));
       }
