@@ -1,14 +1,12 @@
 <?php
-namespace Drupal\family_tree_generator\Gedcom\Tokens\TagTypes;
+namespace Drupal\family_tree_generator\Gedcom\Tokens\TagTypeTypeTypes;
 
-use Drupal\family_tree_generator\Gedcom\Tokens\Tag; 
+use Drupal\family_tree_generator\Gedcom\Tokens\TagTypeType; 
 
-require_once("../Tag.php");
+require_once("TagTypeTypeType.php");
 
-class Nchi extends Tag {
+class Nchi extends TagTypeType {
 	function __construct(){
-		parent::__construct("Nchi");
-
 		$this->specified_child_tags = array();
 	}
 }

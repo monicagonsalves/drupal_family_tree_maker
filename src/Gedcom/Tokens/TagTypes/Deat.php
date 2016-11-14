@@ -1,14 +1,12 @@
 <?php
-namespace Drupal\family_tree_generator\Gedcom\Tokens\TagTypes;
+namespace Drupal\family_tree_generator\Gedcom\Tokens\TagTypeTypeTypes;
 
-use Drupal\family_tree_generator\Gedcom\Tokens\Tag; 
+use Drupal\family_tree_generator\Gedcom\Tokens\TagTypeType; 
 
-require_once("../Tag.php");
+require_once("TagTypeTypeType.php");
 
-class Deat extends Tag {
+class Deat extends TagTypeType {
 	function __construct(){
-		parent::__construct("Deat");
-
 		$this->specified_child_tags = array("date","age","plac","addr");
 	}
 }
