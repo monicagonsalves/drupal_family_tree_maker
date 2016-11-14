@@ -5,10 +5,10 @@ use Drupal\family_tree_generator\Gedcom\Tokens\Tag;
 
 require_once("../Tag.php");
 
-class Wife extends Tag {
+class Buri extends Tag {
 	function __construct(){
-		parent::__construct("Wife");
+		parent::__construct("Buri");
 
-		$this->specified_child_tags = array();
+		$this->specified_child_tags = array("date","age","plac","addr");
 	}
 }
