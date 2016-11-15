@@ -9,5 +9,6 @@ class Addr extends TagType {
 	function __construct(){
 		
 		$this->specified_child_tags = array("cont","addr1","addr2","city","stae","post","ctry");
+	    $this->pattern_can_be_null = FALSE; 
 	}
 }
