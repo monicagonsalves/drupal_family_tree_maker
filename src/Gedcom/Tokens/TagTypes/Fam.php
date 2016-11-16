@@ -6,7 +6,9 @@ use Drupal\family_tree_generator\Gedcom\Tokens\TagType;
 require_once("TagType.php");
 
 class Fam extends TagType {
-	function __construct(){
-		$this->specified_child_tags = array("husb","wife","chil","nchi");
+	function __construct($value){
+		$this->specified_child_tags = array("husb","wife","chil","nchi"); 
+	    $this->rules["can_be_null"] = TRUE; 
+	    $this->value = $value; 
 	}
 }

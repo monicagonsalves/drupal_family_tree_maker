@@ -11,12 +11,16 @@ class TagType {
 	protected $value; 
 	protected $tag_type_factory; 
 
+	protected const YEAR_PAT = "/[1-9]\d{0,3}/";
+	protected const ANY_STR_PAT = "/.*/";
+	protected const XREF_PAT = "/@[a-zA-Z0-9][^@\s]*@/";
+
 	public function __construct($value)
 	{
 		// For child tags
 		$this->tag_type_factory = new TagTypeFactory();
 		$this->user_defined_tags = array();
-		$this->rules = array("pattern" => '/.*/', 
+		$this->rules = array("pattern" => self::ANY_STR_PAT, 
 			                 "can_be_null" => TRUE);
 		$this->value = $value; 
 	}
