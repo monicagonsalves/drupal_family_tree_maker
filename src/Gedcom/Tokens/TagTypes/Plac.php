@@ -7,8 +7,7 @@ require_once("TagType.php");
 
 class Plac extends TagType {
 	function __construct($value){
-		$this->specified_child_tags = array();
-
-		$this->value = $value; 
+		parent::__construct($value, "Pedi");
+		$this->specified_child_tags = array(); 
 	}
 }

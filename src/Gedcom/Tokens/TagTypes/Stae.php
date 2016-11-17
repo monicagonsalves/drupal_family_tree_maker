@@ -7,6 +7,7 @@ require_once("TagType.php");
 
 class Stae extends TagType {
 	function __construct(){
+		parent::__construct($value,"Stae");
 		$this->specified_child_tags = array();
 	}
 }

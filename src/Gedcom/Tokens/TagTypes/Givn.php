@@ -7,9 +7,9 @@ require_once("TagType.php");
 
 class Givn extends TagType {
 	function __construct($value){
+		parent::__construct($value, "Givn");
 		$this->specified_child_tags = array();
 		$this->rules["pattern"] = "/[ A-Za-z\-]{1,90}(,[ A-Za-z\-]{1,90})*/";
 		$this->rules["can_be_null"] = FALSE; 
-		$this->value = $value; 
 	}
 }

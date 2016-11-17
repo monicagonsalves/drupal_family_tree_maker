@@ -7,12 +7,12 @@ require_once("TagType.php");
 
 class City extends TagType {
 	function __construct($value){
+		parent::__construct($value, "City");
 		$this->specified_child_tags = array();
 
 		// can be made up of any characters, but string must 
 		// be between 1 and 60 characters
 	    $this->rules["pattern"] = '/.{1,60}/'; 
 	    $this->rules["can_be_null"] = FALSE; 
-	    $this->value = $value; 
 	}
 }

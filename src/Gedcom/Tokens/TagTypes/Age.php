@@ -7,12 +7,12 @@ require_once("TagType.php");
 
 class Age extends TagType {
 	function __construct($value){
+		parent::__construct($value, "Age");
 		$this->specified_child_tags = array();
 
 		// can be made up of any characters, but string must 
 		// be between 1 and 60 characters
 	    $this->rules["pattern"] = '/CHILD|INFANT|STILLBORN|\d+[m|d|y]?/'; 
 	    $this->rules["can_be_null"] = TRUE; 
-	    $this->value = $value; 
 	}
 }

@@ -11,10 +11,10 @@ use Drupal\family_tree_generator\Gedcom\Utility\ErrorHandler;
 require_once("GedcomLineList/GedcomLineList.php");
 require_once("GedcomLineList/GedcomLineNode.php");
 require_once("Lexer.php");
-require_once("GedcomRecordSet/GedcomRecordSet.php");
+//require_once("GedcomRecordSet/GedcomRecordSet.php");
 //require_once("Utility/ErrorHandler.php");
 
-class Parser{
+class GedcomLineListProcessor{
 	//use ErrorHandler;
 	// Properties
 	private $lexer;
@@ -78,11 +78,22 @@ class Parser{
 		if($this->gedcom_line_list->hasErrors())
 			$this->gedcom_line_list->reportErrors();
 
-		if($this->gedcom_record_set->hasErrors())
-			$this->gedcom_record_set->reportErrors();
+		//if($this->gedcom_record_set->hasErrors())
+		//	$this->gedcom_record_set->reportErrors();
 	}
 	/***************************************************************/
-	public function parse(){  
+	public function getRecords(){
+    	// Takes a GedcomLineList and peels off one sublist at a time
+  		$this->gedcom_line_list->resetCurrent();
+  		$count = 0; 
+	  	while($this->gedcom_line_list->moreListsToGet())
+	  	{
+	  		$sublist = $this->gedcom_line_list->getSublist();
+	  		$count++; 
+		}
+	}
+	/***************************************************************/
+	public function process(){  
 		// 1. First, we are going to lex the file, and create a list 
 		// of all the lines in the file. 
 		$this->gedcom_line_list = $this->lex();
@@ -102,11 +113,11 @@ class Parser{
 		// sublist. Doing so, converts a sublist of GedcomLines into 
 		// a GedcomRecord. At the end of the function call, 
 		// we will have a set of GedcomRecords. 
-		$this->gedcom_record_set = new GedcomRecordSet($this->gedcom_line_list);
+		//$this->gedcom_record_set = new GedcomRecordSet($this->gedcom_line_list);
 
 		// The following foreach was for testing purposes
-		foreach($this->gedcom_record_set as $gedcom_record)
-			echo $gedcom_record; 
+		//foreach($this->gedcom_record_set as $gedcom_record)
+		//	echo $gedcom_record; 
 
 
 	}

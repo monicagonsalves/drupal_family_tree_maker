@@ -7,10 +7,10 @@ require_once("TagType.php");
 
 class Nchi extends TagType {
 	function __construct($value){
+		parent::__construct($value, "Nchi");
 		$this->specified_child_tags = array();
 
 		$this->rules["pattern"] = "/\d{1,3}/";
-		$this->rules["can_be_null"] = FALSE; 
-		$this->value = $value; 
+		$this->rules["can_be_null"] = FALSE;  
 	}
 }
