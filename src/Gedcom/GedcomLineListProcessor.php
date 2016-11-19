@@ -82,15 +82,114 @@ class GedcomLineListProcessor{
 		//	$this->gedcom_record_set->reportErrors();
 	}
 	/***************************************************************/
+	public function makePersonRecord($sublist){
+		// to do 
+		// Let's go through each line
+		$person = array();
+		for($i = 0; $i < count($sublist); $i++){
+			$line = $sublist->getLine($i);
+			$tag = $line->getTag()->getValue();
+			if($tag === "SEX"){
+				$person["sex"] = $line->getValue()->getValue();
+			}
+			else if($tag === "INDI"){
+				$person["xref"] = $line->getXRef()->getValue();
+			}
+			else if($tag === "FAMS"){
+				$person["fams"] = $line->getValue()->getValue();
+			}
+			else if($tag === "FAMC"){
+				$person["famc"] = array("xref" => $line->getValue()->getValue());
+
+				// check the next line 
+				if(($i+1) < count($sublist))
+				{
+					$nextLine = $sublist->getLine($i+1);
+					if($nextLine->getTag()->getValue() === "PEDI")
+						$person["famc"]["pedi"] = $nextLine->getValue()->getValue();
+				}
+			}
+			else if($tag === "NAME"){
+				// The value on the current line must AT LEAST have the first name. 
+				$person["first_name"] = trim(preg_replace("/\/[A-Za-z\-]+\//", "", $line->getValue()->getValue()));
+
+				//=======================LAST NAME===========================================//
+				$person["last_name"] = NULL; 
+				if(preg_match("/\/[A-Za-z\-]+\//", $line->getValue()->getValue(), $matches))
+					$person["last_name"] = str_replace("/", "", $matches[0]);
+				// Does the current line have child lines? If so, search the child lines for 
+				// a line with the "GIVN" tag to get a last name. 
+				if($person["last_name"] === NULL)
+				{
+					for($j = $i; $j < count($sublist); $j++)
+					{
+						$nextLine = $sublist->getLine($j);
+						if($nextLine->getLevel()->getValue() > $line->getLevel()->getValue()
+							&& $nextLine->getTag()->getValue() == "SURN")
+						{
+							$names = explode(",", $nextLine->getValue()->getValue());
+							$person["last_name"] = $names[0];
+						}
+
+					}
+
+					$i = $j; 
+				}
+			}
+		}
+
+		return $person;
+	}
+	/***************************************************************/
+	public function makeFamilyRecord($sublist){
+		$family = array("chil" => array());
+
+		for($i = 0; $i < count($sublist); $i++)
+		{
+			$line = $sublist->getLine($i); 
+			if($line->getTag()->getValue() == "FAM")
+			{
+				$family["xref"] = $line->getXRef()->getValue();
+			}
+			else if($line->getTag()->getValue() == "HUSB")
+			{
+				$family["husb"] = $line->getValue()->getValue();
+			}
+			else if($line->getTag()->getValue() == "WIFE")
+			{
+				$family["wife"] = $line->getValue()->getValue();
+			}
+			else if($line->getTag()->getValue() == "CHIL")
+			{
+				$family["chil"][] = $line->getValue()->getValue();
+			}
+		}
+		var_dump($family);
+		return $family;
+	}
+	/***************************************************************/
 	public function getRecords(){
     	// Takes a GedcomLineList and peels off one sublist at a time
   		$this->gedcom_line_list->resetCurrent();
-  		$count = 0; 
+  		$people = array();
+  		$families = array();
+  		//$count = 0; 
 	  	while($this->gedcom_line_list->moreListsToGet())
 	  	{
 	  		$sublist = $this->gedcom_line_list->getSublist();
-	  		$count++; 
+	  		if($sublist->getLine(0)->getTag()->getValue() == "INDI")
+	  		{
+	  			$person = $this->makePersonRecord($sublist);
+	  			$people[$person["xref"]] = $person; 
+	  		}
+	  		else if($sublist->getLine(0)->getTag()->getValue() == "FAM")
+	  		{
+	  			$family = $this->makeFamilyRecord($sublist);
+	  			$families[$family["xref"]] = $family; 
+	  		}
 		}
+
+		return array("people" => $people, "families" => $families);
 	}
 	/***************************************************************/
 	public function process(){  
@@ -107,7 +206,12 @@ class GedcomLineListProcessor{
 		// 2. Now we're going to split the list into sublists where 
 		// each sublist is a linear representation of a logical 
 		// record. 
-		$this->gedcom_line_list->partition();
+		$records = NULL; 
+		if(!$this->gedcom_line_list->hasErrors())
+		{
+			$this->gedcom_line_list->partition();
+			$records = $this->getRecords();
+		}
 
 		// 3. Next, we must determine the hierarchal structure of each
 		// sublist. Doing so, converts a sublist of GedcomLines into 
@@ -118,7 +222,8 @@ class GedcomLineListProcessor{
 		// The following foreach was for testing purposes
 		//foreach($this->gedcom_record_set as $gedcom_record)
 		//	echo $gedcom_record; 
-
+		var_dump($records);
+		return $records;
 
 	}
 }

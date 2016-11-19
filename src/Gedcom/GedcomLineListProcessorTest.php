@@ -6,9 +6,9 @@ use Drupal\family_tree_generator\Gedcom\Utility\Console;
 
 
 require_once("Utility/Console.php");
-require_once("Parser.php");
+require_once("GedcomLineListProcessor.php");
 
-$parser = new Parser("test.ged");
+$processor = new GedcomLineListProcessor("test.ged");
 
-$parser->parse();
+$processor->process();
 ?>
