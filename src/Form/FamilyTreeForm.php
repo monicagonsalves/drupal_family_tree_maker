@@ -2,7 +2,7 @@
 
 namespace Drupal\family_tree_generator\Form;
 
-use Drupal\family_tree_generator\Gedcom\GedcomFile;
+use Drupal\family_tree_generator\Gedcom\GedcomDrupalAdapter;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
@@ -70,7 +70,7 @@ class FamilyTreeForm extends ContentEntityForm {
     if (isset($values['gedcom_file']))  {
      // $file = File::load($values['gedcom_file'][0]);
       //$file_contents = file_get_contents($file->getFileUri());
-      GedcomFile::process($values['gedcom_file'][0]);
+      GedcomDrupalAdapter::process($values['gedcom_file'][0]);
 
       //dpm($file_contents);
     }

@@ -262,7 +262,7 @@ class Person extends ContentEntityBase implements PersonInterface {
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['nickanme'] = BaseFieldDefinition::create('string')
+    $fields['nickname'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Nickname'))
       ->setDescription(t('A nickname of the Person entity.'))
       ->setSettings(array(

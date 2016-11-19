@@ -89,6 +89,7 @@ class GedcomLineListProcessor{
 		for($i = 0; $i < count($sublist); $i++){
 			$line = $sublist->getLine($i);
 			$tag = $line->getTag()->getValue();
+
 			if($tag === "SEX"){
 				$person["sex"] = $line->getValue()->getValue();
 			}
@@ -106,7 +107,10 @@ class GedcomLineListProcessor{
 				{
 					$nextLine = $sublist->getLine($i+1);
 					if($nextLine->getTag()->getValue() === "PEDI")
+					{
 						$person["famc"]["pedi"] = $nextLine->getValue()->getValue();
+						$i = $i + 1; 
+					}
 				}
 			}
 			else if($tag === "NAME"){
@@ -138,6 +142,8 @@ class GedcomLineListProcessor{
 			}
 		}
 
+		$person["name"] = ucfirst($person["first_name"]) . " " . ucfirst($person["last_name"]);
+
 		return $person;
 	}
 	/***************************************************************/
@@ -164,7 +170,6 @@ class GedcomLineListProcessor{
 				$family["chil"][] = $line->getValue()->getValue();
 			}
 		}
-		var_dump($family);
 		return $family;
 	}
 	/***************************************************************/
@@ -173,7 +178,6 @@ class GedcomLineListProcessor{
   		$this->gedcom_line_list->resetCurrent();
   		$people = array();
   		$families = array();
-  		//$count = 0; 
 	  	while($this->gedcom_line_list->moreListsToGet())
 	  	{
 	  		$sublist = $this->gedcom_line_list->getSublist();
@@ -222,7 +226,6 @@ class GedcomLineListProcessor{
 		// The following foreach was for testing purposes
 		//foreach($this->gedcom_record_set as $gedcom_record)
 		//	echo $gedcom_record; 
-		var_dump($records);
 		return $records;
 
 	}

@@ -7,7 +7,8 @@ require_once("SplittableTrait.php");
 //echo getcwd();
 // FIX THIS SO THAT WE INCLUDE THIS RELATIVE TO THE LOCATION OF THIS FILE AND NOT
 // THE LOCATION OF THE DRIVER
-require_once("Utility/ErrorHandler.php");
+$relpath = getcwd() . "/modules/custom/family_tree_generator/src/Gedcom/Utility/";
+require_once($relpath . "ErrorHandler.php");
 
 class GedcomLineList implements \Countable{
 
